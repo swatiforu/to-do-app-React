@@ -26,7 +26,7 @@ function App() {
     const newList = list.filter((_, i) => i !== index);
     setList(newList);
   }
-
+  
   return (
     <div>
       <Header inputChange={inputChange} submitbtn={submitbtn}/>

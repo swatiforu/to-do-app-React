@@ -58,10 +58,16 @@ button:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.delete{
+.delete {
   background-color: red;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%;
   cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.delete:hover {
+  background-color: darkred;
 }
