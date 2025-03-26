@@ -40,10 +40,28 @@ function App() {
     setList(newList);
   }
 
+  function saveToJson() {
+    const data = JSON.stringify(list);
+    const blob = new Blob([data], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+
+    let a = document.createElement("a");
+    a.href = url;
+    a.download = "list.json";
+    a.click();
+
+    URL.revokeObjectURL(url);
+    a.remove();
+  }
+
+  function uploadJson(){
+    
+  }
   return (
     <div>
       <Header inputChange={inputChange} submitbtn={submitbtn} />
       <List list={list} deleteitem={deleteItem} moveUp={moveUp} moveDown={moveDown} />
+      <button className="save-btn" onClick={saveToJson}>💾 Save to JSON</button>
     </div>
   );
 }
