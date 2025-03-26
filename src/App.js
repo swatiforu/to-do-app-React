@@ -7,6 +7,7 @@ import Header from "./components/header";
 function App() {
   const [list, setList] = useState([]);
   const [input, setInput] = useState("");
+  const [fileEvent, setFileEvent] = useState(null);
 
   function submitbtn() {
     if (input === "") {
@@ -55,13 +56,26 @@ function App() {
   }
 
   function uploadJson(){
-    
+    const file = fileEvent.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const data = JSON.parse(e.target.result);
+      setList([...list, ...data]);
+    };
+    reader.readAsText(file);
+  }
+
+  function setEvent(event){
+    setFileEvent(event);
   }
   return (
     <div>
       <Header inputChange={inputChange} submitbtn={submitbtn} />
       <List list={list} deleteitem={deleteItem} moveUp={moveUp} moveDown={moveDown} />
       <button className="save-btn" onClick={saveToJson}>💾 Save to JSON</button>
+      <br/>
+      <input type="file" accept=".json" className="upload-btn" onChange={setEvent}></input>
+      <button className="save-btn" onClick={uploadJson}>Upload JSON</button>
     </div>
   );
 }
