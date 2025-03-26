@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState}from "react";
+import InputField from "./components/inputField";
+import SubmitBtn from "./components/submitBtn";
+import List from "./components/list";
+import Header from "./components/header";
 
 function App() {
+
+  const [list, setList] = useState([]);
+  const [input, setInput] = useState("");
+
+  function submitbtn() {
+    if(input === ""){
+      return;
+    }
+    setList([...list, input]);
+    setInput("");
+    document.getElementById("field").value = "";
+  }
+
+  function inputChange(){
+    setInput(document.getElementById("field").value);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header inputChange={inputChange} submitbtn={submitbtn}/>
+      <List list={list}/>
     </div>
   );
 }
