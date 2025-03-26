@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import InputField from "./components/inputField";
-import SubmitBtn from "./components/submitBtn";
 import List from "./components/list";
 import Header from "./components/header";
 
