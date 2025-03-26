@@ -3,15 +3,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f8f9fa;
+  background-color: white;
 }
 
 div {
   text-align: center;
 }
 .header{
-    position: fixed;
+
     top: 0;
     left: 0;
     width: 100%;
@@ -43,7 +42,7 @@ button:hover {
 }
 
 .list {
-  margin-top: 20px;
+  margin-top: 2px;
 }
 
 .list ul {
